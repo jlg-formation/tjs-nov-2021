@@ -4,12 +4,22 @@ export interface AppToggleProps {
     on: string;
     off: string;
   };
+  action: () => void;
 }
 
-function AppToggle({ label, checked }: AppToggleProps) {
+function AppToggle({ label, checked, action }: AppToggleProps) {
+  const handleCheckBox = () => {
+    console.log("on change");
+    action();
+  };
   return (
     <label>
-      <input type="checkbox" role="switch" />
+      <input
+        type="checkbox"
+        role="switch"
+        checked={checked}
+        onChange={handleCheckBox}
+      />
       <span className={checked ? label.on : label.off}></span>
     </label>
   );
