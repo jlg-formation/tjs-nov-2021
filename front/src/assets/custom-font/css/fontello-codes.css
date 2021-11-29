@@ -1,0 +1,9 @@
+
+.icon-logo:before { content: '\e800'; } /* '' */
+.icon-plus:before { content: '\e801'; } /* '' */
+.icon-right-open:before { content: '\e802'; } /* '' */
+.icon-spin3:before { content: '\e832'; } /* '' */
+.icon-spin5:before { content: '\e838'; } /* '' */
+.icon-sun:before { content: '\f185'; } /* '' */
+.icon-moon:before { content: '\f186'; } /* '' */
+.icon-trash:before { content: '\f1f8'; } /* '' */
