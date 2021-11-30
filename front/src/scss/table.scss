@@ -1,0 +1,76 @@
+.content {
+  width: 100%;
+  max-width: 25em;
+
+  nav {
+    display: flex;
+    gap: 0.3em;
+    margin-bottom: 1em;
+  }
+
+  table {
+    width: 100%;
+    border: 0.1em solid var(--border-color);
+    border-collapse: collapse;
+    th,
+    td {
+      padding: 0.5em 1em;
+    }
+    thead {
+      background-color: var(--border-color);
+    }
+
+    tbody {
+      cursor: pointer;
+      tr:nth-child(even) {
+        background-color: var(--cell-even-bg-color);
+      }
+
+      tr:hover {
+        background-color: var(--cell-hover-bg-color);
+      }
+
+      tr.selected {
+        background-color: var(--cell-selected-bg-color);
+      }
+
+      .qty,
+      .price {
+        text-align: right;
+      }
+    }
+  }
+
+  table.skeleton {
+    tbody {
+      cursor: default;
+
+      tr {
+        background-color: var(--bg-color);
+      }
+      tr {
+        td {
+          background-clip: content-box;
+          animation: loading 2s ease-in-out 0s infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    background-color: var(--skeleton-start-color);
+    color: var(--skeleton-start-color);
+  }
+
+  50% {
+    background-color: var(--skeleton-end-color);
+    color: var(--skeleton-end-color);
+  }
+
+  to {
+    background-color: var(--skeleton-start-color);
+    color: var(--skeleton-start-color);
+  }
+}
