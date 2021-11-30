@@ -1,3 +1,5 @@
+import "./AppToggle.scss";
+
 export interface AppToggleProps {
   checked: boolean;
   label: {
@@ -13,14 +15,17 @@ function AppToggle({ label, checked, action }: AppToggleProps) {
     action();
   };
   return (
-    <label>
+    <label className="AppToggle">
       <input
         type="checkbox"
         role="switch"
         checked={checked}
         onChange={handleCheckBox}
       />
-      <span className={checked ? label.on : label.off}></span>
+      <div className="wrapper">
+        <div className="ergo"></div>
+        <span className={checked ? label.on : label.off}></span>
+      </div>
     </label>
   );
 }

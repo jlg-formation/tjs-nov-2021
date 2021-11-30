@@ -1,0 +1,27 @@
+.AppToggle {
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  .wrapper {
+    border: 0.1em solid black;
+    border-radius: 1.2em;
+    padding: 0.2em 0.2em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    .ergo {
+      background-color: white;
+      width: 1.7em;
+      height: 1.7em;
+      border-radius: 100%;
+    }
+  }
+
+  input:checked + .wrapper {
+    flex-flow: row-reverse;
+  }
+}
