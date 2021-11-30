@@ -4,8 +4,10 @@
 @import "./assets/custom-font/css/fontello.css";
 @import "./assets/custom-font/css/animation.css";
 
-@import "./scss/layout.scss";
 @import "./scss/theme.scss";
+
+@import "./scss/layout.scss";
+@import "./scss/button.scss";
 
 body {
   font-family: sans-serif;

@@ -1,0 +1,31 @@
+button {
+  padding: 0.5em 1em;
+  background-color: var(--button-bg-color);
+  color: var(--disabled-fg-color);
+  border: 0.1em solid var(--button-bg-color);
+  &:not(:disabled) {
+    cursor: pointer;
+    color: var(--fg-color);
+    &:hover {
+      background-color: var(--hover-button-bg-color);
+      border-color: var(--hover-button-bg-color);
+    }
+    &:active {
+      background-color: var(--active-button-bg-color);
+      border-color: var(--active-button-bg-color);
+    }
+    &.primary {
+      background-color: var(--primary-button-bg-color);
+      border-color: var(--primary-button-bg-color);
+      color: var(--primary-button-fg-color);
+      &:hover {
+        background-color: var(--primary-hover-button-bg-color);
+        border-color: var(--primary-hover-button-bg-color);
+      }
+      &:active {
+        background-color: var(--primary-active-button-bg-color);
+        border-color: var(--primary-active-button-bg-color);
+      }
+    }
+  }
+}
