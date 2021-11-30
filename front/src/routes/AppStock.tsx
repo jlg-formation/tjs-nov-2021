@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Article } from "../interfaces/Article";
+import { articleService } from "../services/ArticleService";
 
 function AppStock() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    articleService.get().subscribe({
+      next: (articles) => {
+        setArticles(articles);
+        setIsLoading(false);
+      },
+      complete: () => {},
+      error: (err) => {
+        console.log("err: ", err);
+        setIsLoading(false);
+        setError("eh zut, j'arrive pas à charger les articles...");
+      },
+    });
+  }, []);
+
   return (
     <main>
       <h1>Liste des articles</h1>
@@ -18,37 +40,30 @@ function AppStock() {
             <span className="icon-trash"></span>
           </button>
         </nav>
-        <table>
-          <thead>
-            <tr>
-              <th className="name">Nom</th>
-              <th className="price">Prix</th>
-              <th className="qty">Quantité</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">450</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis Cruciforme</td>
-              <td className="price">11.23 €</td>
-              <td className="qty">50</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">450</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">450</td>
-            </tr>
-          </tbody>
-        </table>
+        {isLoading ? (
+          <span>is loading...</span>
+        ) : error !== "" ? (
+          <span className="error">{error}</span>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th className="name">Nom</th>
+                <th className="price">Prix</th>
+                <th className="qty">Quantité</th>
+              </tr>
+            </thead>
+            <tbody>
+              {articles.map((a) => (
+                <tr key={a.id}>
+                  <td className="name">{a.name}</td>
+                  <td className="price">{a.price} €</td>
+                  <td className="qty">{a.qty}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </main>
   );
