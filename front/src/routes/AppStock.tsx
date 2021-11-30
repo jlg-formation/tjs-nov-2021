@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function AppStock() {
   return (
     <main>
@@ -7,9 +9,11 @@ function AppStock() {
           <button>
             <span className="icon-spin3"></span>
           </button>
-          <button>
-            <span className="icon-plus"></span>
-          </button>
+          <Link to="add">
+            <button>
+              <span className="icon-plus"></span>
+            </button>
+          </Link>
           <button>
             <span className="icon-trash"></span>
           </button>
