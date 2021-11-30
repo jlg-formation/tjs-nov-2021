@@ -6,7 +6,7 @@
 }
 
 header {
-  background-color: #eee;
+  background-color: var(--primary-bg-color);
   height: 3em;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@ header {
 }
 
 footer {
-  background-color: #eee;
+  background-color: var(--footer-bg-color);
   height: 3em;
   display: flex;
   align-items: center;

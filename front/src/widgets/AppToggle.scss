@@ -14,7 +14,7 @@
     gap: 0.5em;
 
     .ergo {
-      background-color: white;
+      background-color: var(--button-bg-color);
       $ergo-side: 1.7em;
       width: $ergo-side;
       height: $ergo-side;
