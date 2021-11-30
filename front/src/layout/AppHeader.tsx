@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import AppThemeToggle from "../widgets/AppThemeToggle";
 
 function AppHeader() {
   return (
     <header>
-      <a href="/">
+      <Link to="/">
         <span className="icon-logo"></span>
         <span>Gestion Stock</span>
-      </a>
+      </Link>
       <AppThemeToggle />
     </header>
   );

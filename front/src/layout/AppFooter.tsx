@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 function AppFooter() {
   return (
     <footer>
-      <a href="/legal">Mentions Légales</a>
+      <Link to="/legal">Mentions Légales</Link>
     </footer>
   );
 }
