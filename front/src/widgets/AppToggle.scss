@@ -15,8 +15,9 @@
 
     .ergo {
       background-color: white;
-      width: 1.7em;
-      height: 1.7em;
+      $ergo-side: 1.7em;
+      width: $ergo-side;
+      height: $ergo-side;
       border-radius: 100%;
     }
   }

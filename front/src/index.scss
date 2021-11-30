@@ -5,7 +5,10 @@
 @import "./assets/custom-font/css/animation.css";
 
 @import "./scss/layout.scss";
+@import "./scss/theme.scss";
 
 body {
   font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
