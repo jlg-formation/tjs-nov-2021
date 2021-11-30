@@ -21,8 +21,9 @@ function AppToggle({ label, checked, action }: AppToggleProps) {
         role="switch"
         checked={checked}
         onChange={handleCheckBox}
+        name="theme"
       />
-      <div className="wrapper">
+      <div className="wrapper" role="none">
         <div className="ergo"></div>
         <span className={checked ? label.on : label.off}></span>
       </div>
