@@ -12,6 +12,7 @@ class ThemeService {
       });
       document.body.classList.add(theme);
     });
+    this.init();
   }
 
   toggle() {
@@ -20,6 +21,22 @@ class ThemeService {
       return;
     }
     this.theme$.next("light");
+  }
+
+  init() {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      this.theme$.next("dark");
+    }
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const newColorScheme = e.matches ? "dark" : "light";
+        this.theme$.next(newColorScheme);
+      });
   }
 }
 
