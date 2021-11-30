@@ -1,9 +1,55 @@
 :root {
+  --primary-hue: 240;
+
   --bg-color: white;
   --fg-color: black;
+
+  --primary-bg-color: hsl(var(--primary-hue), 100%, 90%);
+  --footer-bg-color: hsl(var(--primary-hue), 0%, 90%);
+
+  --button-bg-color: #eee;
+  --disabled-fg-color: #aaa;
+
+  --hover-button-bg-color: #ddd;
+  --active-button-bg-color: #ccc;
+
+  --primary-button-bg-color: hsl(var(--primary-hue), 100%, 60%);
+  --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 70%);
+  --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 80%);
+  --primary-button-fg-color: white;
+
+  --border-color: #bbb;
+  --cell-even-bg-color: #eee;
+  --cell-hover-bg-color: #ddd;
+  --cell-selected-bg-color: #ccc;
+
+  --skeleton-start-color: #eee;
+  --skeleton-end-color: #ddd;
 }
 
 .dark {
   --bg-color: black;
   --fg-color: white;
+
+  --primary-bg-color: hsl(var(--primary-hue), 100%, 10%);
+  --footer-bg-color: hsl(var(--primary-hue), 0%, 10%);
+
+  --button-bg-color: #333;
+  --disabled-fg-color: #777;
+
+  --hover-button-bg-color: #555;
+  --active-button-bg-color: #666;
+
+  --primary-button-bg-color: hsl(var(--primary-hue), 100%, 30%);
+  --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 40%);
+  --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 50%);
+  --primary-button-fg-color: white;
+
+  --border-color: #555;
+  --cell-even-bg-color: #222;
+  --cell-hover-bg-color: #333;
+  --cell-selected-bg-color: #444;
+
+  --skeleton-start-color: #333;
+  --skeleton-end-color: #444;
 }
