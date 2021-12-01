@@ -1,3 +1,4 @@
+import { format } from "path";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { lastValueFrom } from "rxjs";
@@ -61,6 +62,13 @@ function AppStock() {
     })();
   };
 
+  const format = (nbr: number): string => {
+    if (typeof nbr !== "number") {
+      return "";
+    }
+    return nbr.toFixed(2) + " €";
+  };
+
   useEffect(refresh, []);
 
   return (
@@ -109,7 +117,7 @@ function AppStock() {
                   className={selectedArticles.has(a) ? "selected" : ""}
                 >
                   <td className="name">{a.name}</td>
-                  <td className="price">{a.price} €</td>
+                  <td className="price">{format(a.price)}</td>
                   <td className="qty">{a.qty}</td>
                 </tr>
               ))}

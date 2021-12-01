@@ -16,7 +16,13 @@ function AppStockAdd() {
   const handleChange =
     (field: string) => (event: ChangeEvent<HTMLInputElement>) => {
       console.log("onChange sur " + field);
-      const na = { ...newArticle, [field]: event.target.value };
+      const type = event.target.type;
+      const na = {
+        ...newArticle,
+        [field]: ["number", "range"].includes(type)
+          ? +event.target.value
+          : event.target.value,
+      };
       setNewArticle(na);
       console.log("na: ", na);
     };
