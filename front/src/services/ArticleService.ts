@@ -37,6 +37,10 @@ class ArticleService {
       })
     );
   }
+
+  remove(): Observable<void> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export const articleService = new ArticleService();

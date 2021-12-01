@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { lastValueFrom, timer } from "rxjs";
 import { Article } from "../interfaces/Article";
 import { articleService } from "../services/ArticleService";
 
 function AppStock() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isRemoving, setIsRemoving] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string>("");
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
@@ -45,6 +47,22 @@ function AppStock() {
     setSelectedArticles(newSet);
   };
 
+  const handleRemove = () => {
+    (async () => {
+      try {
+        setError("");
+        setIsRemoving(true);
+        await lastValueFrom(timer(2000));
+        await lastValueFrom(articleService.remove());
+      } catch (err) {
+        console.log("err: ", err);
+        setError("oups... Cannot delete");
+      } finally {
+        setIsRemoving(false);
+      }
+    })();
+  };
+
   return (
     <main>
       <h1>Liste des articles</h1>
@@ -61,8 +79,12 @@ function AppStock() {
             </button>
           </Link>
           {selectedArticles.size > 0 && (
-            <button>
-              <span className="icon-trash"></span>
+            <button onClick={handleRemove}>
+              <span
+                className={
+                  isRemoving ? "icon-spin5 animate-spin" : "icon-trash"
+                }
+              ></span>
             </button>
           )}
         </nav>
