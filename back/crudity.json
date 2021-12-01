@@ -1,7 +1,7 @@
 {
   "port": 3500,
   "cors": true,
-  "publicDir": "./public",
+  "publicDir": "../front/build",
   "resources": {
     "articles": {
       "pageSize": 10,
