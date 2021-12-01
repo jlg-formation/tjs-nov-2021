@@ -3,7 +3,7 @@ import { fromFetch } from "rxjs/fetch";
 import { Article } from "../interfaces/Article";
 import { Observable } from "rxjs";
 
-const url = "http://localhost:3500/api/articles";
+const url = "/api/articles";
 
 class ArticleService {
   add(newArticle: {
