@@ -1,3 +1,12 @@
 {
-  "port": 3500
+  "port": 3500,
+  "cors": true,
+  "publicDir": "./public",
+  "resources": {
+    "articles": {
+      "pageSize": 10,
+      "delay": 2000
+    }
+  },
+  "rootEndPoint": "/api"
 }

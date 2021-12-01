@@ -8,7 +8,7 @@ function AppStock() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string>("");
 
-  useEffect(() => {
+  const refresh = () => {
     articleService.get().subscribe({
       next: (articles) => {
         setArticles(articles);
@@ -23,15 +23,28 @@ function AppStock() {
         setError("eh zut, j'arrive pas à charger les articles...");
       },
     });
+  };
+
+  useEffect(() => {
+    refresh();
   }, []);
+
+  const handleRefresh = () => {
+    console.log("handleRefresh");
+    setIsLoading(true);
+    setError("");
+    refresh();
+  };
 
   return (
     <main>
       <h1>Liste des articles</h1>
       <div className="content">
         <nav>
-          <button>
-            <span className="icon-spin3"></span>
+          <button onClick={handleRefresh}>
+            <span
+              className={"icon-spin3" + (isLoading ? " animate-spin" : "")}
+            ></span>
           </button>
           <Link to="add">
             <button>
