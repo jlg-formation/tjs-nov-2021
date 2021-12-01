@@ -1,0 +1,50 @@
+.content {
+  table.card {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5em;
+      tr {
+        display: flex;
+        flex-flow: column;
+        border: 0.1em solid var(--border-color);
+        cursor: pointer;
+        &:hover {
+          background-color: var(--cell-hover-bg-color);
+        }
+        &.selected {
+          background-color: var(--cell-selected-bg-color);
+        }
+
+        td {
+          display: flex;
+          align-items: center;
+          gap: 0.3em;
+          width: 7em;
+
+          padding: 0.5em;
+
+          &.name {
+            font-size: 1.2em;
+            font-weight: bold;
+          }
+
+          &.qty {
+            &::after {
+              content: "en stock";
+            }
+          }
+        }
+      }
+    }
+  }
+
+  table.card.skeleton {
+    background-color: #eee;
+  }
+}

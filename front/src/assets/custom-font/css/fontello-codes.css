@@ -2,6 +2,8 @@
 .icon-logo:before { content: '\e800'; } /* '' */
 .icon-plus:before { content: '\e801'; } /* '' */
 .icon-right-open:before { content: '\e802'; } /* '' */
+.icon-th-list:before { content: '\e803'; } /* '' */
+.icon-th-large:before { content: '\e804'; } /* '' */
 .icon-spin3:before { content: '\e832'; } /* '' */
 .icon-spin5:before { content: '\e838'; } /* '' */
 .icon-sun:before { content: '\f185'; } /* '' */

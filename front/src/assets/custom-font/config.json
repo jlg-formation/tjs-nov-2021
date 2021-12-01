@@ -61,6 +61,18 @@
       "css": "moon",
       "code": 61830,
       "src": "fontawesome"
+    },
+    {
+      "uid": "f805bb95d40c7ef2bc51b3d50d4f2e5c",
+      "css": "th-list",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "dd492243d64e21dfe16a92452f7861cb",
+      "css": "th-large",
+      "code": 59396,
+      "src": "fontawesome"
     }
   ]
 }

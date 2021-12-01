@@ -2,13 +2,18 @@
   width: 100%;
   max-width: 25em;
 
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
   nav {
     display: flex;
     gap: 0.3em;
     margin-bottom: 1em;
   }
 
-  table {
+  table.table {
     width: 100%;
     border: 0.1em solid var(--border-color);
     border-collapse: collapse;

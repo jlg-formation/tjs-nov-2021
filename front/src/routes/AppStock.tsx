@@ -6,6 +6,8 @@ import { CurrencyContext } from "../contexts/CurrencyContext";
 import { LocaleContext } from "../contexts/LocaleContext";
 import { Article } from "../interfaces/Article";
 
+type Layout = "table" | "card";
+
 function AppStock() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRemoving, setIsRemoving] = useState(false);
@@ -15,6 +17,7 @@ function AppStock() {
   const localeStr = useContext(LocaleContext);
   const currencyStr = useContext(CurrencyContext);
   const articleService = useContext(ArticleContext);
+  const [layout, setLayout] = useState<Layout>("card");
 
   const refresh = () => {
     setSelectedArticles(new Set());
@@ -76,35 +79,53 @@ function AppStock() {
     }).format(nbr);
   };
 
+  const handleGridLayout = () => {
+    if (layout === "card") {
+      setLayout("table");
+      return;
+    }
+    setLayout("card");
+  };
+
   useEffect(refresh, [articleService]);
 
   return (
     <main>
       <h1>Liste des articles</h1>
       <div className="content">
-        <nav>
-          <button onClick={handleRefresh}>
-            <span
-              className={"icon-spin3" + (isLoading ? " animate-spin" : "")}
-            ></span>
-          </button>
-          <Link to="add">
-            <button aria-label="Ajouter">
-              <span className="icon-plus"></span>
-            </button>
-          </Link>
-          {selectedArticles.size > 0 && (
-            <button onClick={handleRemove} aria-label="Supprimer">
+        <div className="toolbar">
+          <nav>
+            <button onClick={handleRefresh}>
               <span
-                className={
-                  isRemoving ? "icon-spin5 animate-spin" : "icon-trash"
-                }
+                className={"icon-spin3" + (isLoading ? " animate-spin" : "")}
               ></span>
             </button>
-          )}
-        </nav>
+            <Link to="add">
+              <button aria-label="Ajouter">
+                <span className="icon-plus"></span>
+              </button>
+            </Link>
+            {selectedArticles.size > 0 && (
+              <button onClick={handleRemove} aria-label="Supprimer">
+                <span
+                  className={
+                    isRemoving ? "icon-spin5 animate-spin" : "icon-trash"
+                  }
+                ></span>
+              </button>
+            )}
+          </nav>
+          <nav>
+            <button onClick={handleGridLayout}>
+              <span
+                className={layout === "card" ? "icon-th-list" : "icon-th-large"}
+              ></span>
+            </button>
+          </nav>
+        </div>
+
         {isLoading ? (
-          <table className="skeleton">
+          <table className={"skeleton " + layout}>
             <thead>
               <tr>
                 <th className="name">Nom</th>
@@ -125,7 +146,7 @@ function AppStock() {
         ) : error !== "" ? (
           <span className="error">{error}</span>
         ) : (
-          <table>
+          <table className={layout}>
             <thead>
               <tr>
                 <th className="name">Nom</th>
