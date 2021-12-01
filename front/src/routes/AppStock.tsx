@@ -89,12 +89,12 @@ function AppStock() {
             ></span>
           </button>
           <Link to="add">
-            <button>
+            <button aria-label="Ajouter">
               <span className="icon-plus"></span>
             </button>
           </Link>
           {selectedArticles.size > 0 && (
-            <button onClick={handleRemove}>
+            <button onClick={handleRemove} aria-label="Supprimer">
               <span
                 className={
                   isRemoving ? "icon-spin5 animate-spin" : "icon-trash"

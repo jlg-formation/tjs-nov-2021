@@ -58,6 +58,7 @@ function AppStockAdd() {
           <div>Nom</div>
           <input
             type="text"
+            name="name"
             value={newArticle.name}
             onChange={handleChange("name")}
           />
@@ -66,6 +67,7 @@ function AppStockAdd() {
           <div>Prix</div>
           <input
             type="number"
+            name="price"
             value={newArticle.price}
             onChange={handleChange("price")}
           />
@@ -73,6 +75,7 @@ function AppStockAdd() {
         <label>
           <div>Quantité</div>
           <input
+            name="qty"
             type="number"
             value={newArticle.qty}
             onChange={handleChange("qty")}
