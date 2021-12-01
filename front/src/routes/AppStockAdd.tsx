@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, FormEventHandler, useState } from "react";
 import { useNavigate } from "react-router";
-import { lastValueFrom, timer } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { articleService } from "../services/ArticleService";
 
 function AppStockAdd() {
@@ -34,13 +34,13 @@ function AppStockAdd() {
         setIsAdding(true);
         // await lastValueFrom(timer(2000));
         await lastValueFrom(articleService.add(newArticle));
+        setIsAdding(false);
         // 2) redirect vers /stock
         navigate("/stock");
       } catch (err) {
         console.log("err: ", err);
-        setError("oups... Cannot add the article");
-      } finally {
         setIsAdding(false);
+        setError("oups... Cannot add the article");
       }
     })();
   };

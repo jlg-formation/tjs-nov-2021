@@ -5,7 +5,7 @@
   "resources": {
     "articles": {
       "pageSize": 10,
-      "delay": 2000
+      "delay": 500
     }
   },
   "rootEndPoint": "/api"
