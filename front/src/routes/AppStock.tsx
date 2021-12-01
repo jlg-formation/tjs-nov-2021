@@ -76,7 +76,7 @@ function AppStock() {
     }).format(nbr);
   };
 
-  useEffect(refresh, []);
+  useEffect(refresh, [articleService]);
 
   return (
     <main>
