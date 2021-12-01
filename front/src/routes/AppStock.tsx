@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { lastValueFrom } from "rxjs";
+import { ArticleContext } from "../contexts/ArticleContext";
+import { CurrencyContext } from "../contexts/CurrencyContext";
 import { LocaleContext } from "../contexts/LocaleContext";
 import { Article } from "../interfaces/Article";
-import { articleService } from "../services/ArticleService";
 
 function AppStock() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,9 @@ function AppStock() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string>("");
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
-  const localeStr = useContext<string>(LocaleContext);
+  const localeStr = useContext(LocaleContext);
+  const currencyStr = useContext(CurrencyContext);
+  const articleService = useContext(ArticleContext);
 
   const refresh = () => {
     setSelectedArticles(new Set());
@@ -69,7 +72,7 @@ function AppStock() {
     }
     return new Intl.NumberFormat(localeStr, {
       style: "currency",
-      currency: "EUR",
+      currency: currencyStr,
     }).format(nbr);
   };
 
