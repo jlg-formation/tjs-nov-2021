@@ -5,6 +5,14 @@ import { Article } from "../interfaces/Article";
 const url = "http://localhost:3500/api/articles";
 
 class ArticleService {
+  add(newArticle: {
+    name: string;
+    price: number;
+    qty: number;
+  }): import("rxjs").Observable<unknown> {
+    throw new Error("Method not implemented.");
+  }
+
   get() {
     return fromFetch(url).pipe(
       timeout(5000),
