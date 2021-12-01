@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { lastValueFrom, timer } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { Article } from "../interfaces/Article";
 import { articleService } from "../services/ArticleService";
 
@@ -29,10 +29,6 @@ function AppStock() {
     });
   };
 
-  useEffect(() => {
-    refresh();
-  }, []);
-
   const handleRefresh = () => {
     console.log("handleRefresh");
     setIsLoading(true);
@@ -52,7 +48,6 @@ function AppStock() {
       try {
         setError("");
         setIsRemoving(true);
-        await lastValueFrom(timer(2000));
         await lastValueFrom(
           articleService.remove([...selectedArticles].map((a) => a.id))
         );
@@ -65,6 +60,8 @@ function AppStock() {
       }
     })();
   };
+
+  useEffect(refresh, []);
 
   return (
     <main>

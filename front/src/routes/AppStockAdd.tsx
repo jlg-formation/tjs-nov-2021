@@ -32,7 +32,6 @@ function AppStockAdd() {
         // 1) add the new Article to the article list
         setError("");
         setIsAdding(true);
-        // await lastValueFrom(timer(2000));
         await lastValueFrom(articleService.add(newArticle));
         setIsAdding(false);
         // 2) redirect vers /stock
