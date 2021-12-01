@@ -7,8 +7,10 @@ function AppStock() {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string>("");
+  const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
 
   const refresh = () => {
+    setSelectedArticles(new Set());
     articleService.get().subscribe({
       next: (articles) => {
         setArticles(articles);
@@ -34,6 +36,13 @@ function AppStock() {
     setIsLoading(true);
     setError("");
     refresh();
+  };
+
+  const handleClick = (a: Article) => () => {
+    console.log("click");
+    const newSet = new Set(selectedArticles);
+    newSet.has(a) ? newSet.delete(a) : newSet.add(a);
+    setSelectedArticles(newSet);
   };
 
   return (
@@ -70,7 +79,11 @@ function AppStock() {
             </thead>
             <tbody>
               {articles.map((a) => (
-                <tr key={a.id}>
+                <tr
+                  key={a.id}
+                  onClick={handleClick(a)}
+                  className={selectedArticles.has(a) ? "selected" : ""}
+                >
                   <td className="name">{a.name}</td>
                   <td className="price">{a.price} €</td>
                   <td className="qty">{a.qty}</td>
