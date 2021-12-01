@@ -53,7 +53,10 @@ function AppStock() {
         setError("");
         setIsRemoving(true);
         await lastValueFrom(timer(2000));
-        await lastValueFrom(articleService.remove());
+        await lastValueFrom(
+          articleService.remove([...selectedArticles].map((a) => a.id))
+        );
+        refresh();
       } catch (err) {
         console.log("err: ", err);
         setError("oups... Cannot delete");

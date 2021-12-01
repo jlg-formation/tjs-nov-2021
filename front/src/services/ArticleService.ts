@@ -38,8 +38,23 @@ class ArticleService {
     );
   }
 
-  remove(): Observable<void> {
-    throw new Error("Method not implemented.");
+  remove(ids: string[]): Observable<void> {
+    return fromFetch(url, {
+      method: "DELETE",
+      body: JSON.stringify(ids),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).pipe(
+      timeout(5000),
+      map((response) => {
+        if (response.status !== 204) {
+          console.error("cannot add article", response);
+          throw new Error("error while adding");
+        }
+        return;
+      })
+    );
   }
 }
 
