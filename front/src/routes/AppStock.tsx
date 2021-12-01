@@ -14,7 +14,9 @@ function AppStock() {
         setArticles(articles);
         setIsLoading(false);
       },
-      complete: () => {},
+      complete: () => {
+        console.log("complete");
+      },
       error: (err) => {
         console.log("err: ", err);
         setIsLoading(false);
